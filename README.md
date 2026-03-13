@@ -1,2 +1,3 @@
 # rust
-leaerning rust 
+Rust notes
+
