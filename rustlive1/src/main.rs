@@ -1,50 +1,74 @@
-// Compounnd Data Types
-// arrays, tuples, slice
+//Functions
+//Entry point
+//any function /variables should be written in sanke case
+//snake case: hello_world
+//kebab case: hello-world
 
+fn main() {
+    hello_world();
+    tell_height(182);
+    human_id("Joel", 55, 182.2);
 
-fn main(){
-    // Arrays
-    let numbers: [i32; 5 ] = [1,2,3,4,5];
-    println!("Number Array:{:?}", numbers);
-    //let mix = [1,2, "apple", true];
-    //println!("Mix Array: {:?}", mix);
-    let fruits: [&str; 3] = ["Apple", "Banana", "Orange"];
+    let _x: i32 = {
+        let price: i32 = 5;
+        let qty: i32 = 10;
+        price * qty
+    };
+    println!("Result is {}", _x);
+    add(4, 6);
+    let y = add(4, 6);
+    println!("Value of y is : {}", y);
+    println!("Value from function 'add' is: {}.", add(4, 6));
 
-    println!("Fruits Array: {:?}", fruits);
-    println!("Fruits Array: {:?}", fruits[0]);
-    println!("Fruits Array: {:?}", fruits[1]);
-    println!("Fruits Array: {:?}", fruits[2]);
-    /////////////////////////////////////////////
+    //Calling the BMI Function
+    let weight: f64 = 70.0;
+    let height: f64 = 1.82;
+    let bmi: f64 = calculate_bmi(weight, height);
+    println!("Your BMI is: {:.2}", bmi);
+}
 
-    //Tuples
-    let human = ("Alice", 30, false);
-    println!("Human Tuple {:?}", human);
-    
-    let my_mix_tuple = ("Kratos", 23, true, [1,2,3,4,5]);
-    println!("My Mix Tuple: {:?}", my_mix_tuple);
- 
-    //Slices: "dynamically sized view into a contagious sequence of elements"
-    //Slices: [1,2,3,4,5] 
-    let number_slices:&[i32] = &[1,2,3,4,5];
-    println!("Number Slice: {:?}", number_slices);  
+// hoisting -  can call function anywhere in our code
+fn hello_world() {
+    println!("Hello, Rust!");
+}
 
-    let animal_slices:&[&str] = &["Lion","Elephant","Crocodile"];
-    println!("Number Slice: {:?}", animal_slices);
+// you can insert input values
+fn tell_height(height: u32) {
+    println!("My height is {} cm.", height)
+}
 
-    //Strings Vs String Slices (&str)
-    //String [growable, mutable, owned string type]
-    let mut stone_cold: String = String::from("Hell, ");
-    println!("Stone cold says: {}", stone_cold);
-    stone_cold.push_str("Yeah!");
-    println!("Stone cold says: {}", stone_cold);
- 
-    // B- &str (String slice) - a reference
-    let string: String = String::from("Hello, Megan!");
-    let slice: &str = &string;
-    println!("Slice Value: {}", slice);
+fn human_id(name: &str, age: u32, height: f32) {
+    println!(
+        "My name is {}, I am {} years old, and my height is {} cm.",
+        name, age, height
+    );
+}
 
-    let string: String = String::from("Hello, World!");
-    let slice: &str = &string[0..5];
-    println!("Slice Value: {}", slice);
+//functions returning values
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
 
-}   
+//Expressions and Statements
+//Expression:Anything that returns a value.
+//Statement: Anything that does not return a value
+//Almost all statements in Rust end with ;
+//1 variable declarations : let x = 5;
+//2 Function definitions: fn foo() {}
+//3 Control flow statements: if condition { /* code */ }
+//else {/* code*/}, while condition {/* code*/} etc.
+
+//Expression
+//--------------
+//5
+//true & false
+//add(3,4)
+//if condition {value1} else {value2}
+//({code}}
+
+// Final Example
+// BMI = height(kg)/height(m)^2
+
+fn calculate_bmi(weight_kg: f64, height_m: f64) -> f64 {
+    weight_kg / (height_m * height_m)
+}
