@@ -39,7 +39,7 @@ fn hello_world() {
 
 Parameters are specified in the function signature with their types.
 
-```rust
+```rustremove heat 
 fn tell_height(height: u32) {
     println!("My height is {} cm.", height);
 }
